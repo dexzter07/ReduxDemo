@@ -38,7 +38,7 @@ const cakeReducer = (state=cakeInitialState,action) => {
 }
 const iceCreamReducer = (state=icecreamInitialState,action) => {
     switch(action.type){
-        case BUY_CAKE: return{
+        case BUY_ICECREAM: return{
             ...state,
             numOfIcecream: state.numOfIcecream -1
         }
@@ -52,7 +52,7 @@ const rootReducer = combineReducers({
     iceCream: iceCreamReducer
 })
 // Store created
-const store = createStore(reducer)
+const store = createStore(rootReducer)
 // getState
 console.log('Initial State',store.getState())
 // subscribe method is used
@@ -61,6 +61,9 @@ const unsubscribe = store.subscribe(()=> console.log('Updated State', store.getS
 store.dispatch(buycake())
 store.dispatch(buycake())
 store.dispatch(buycake())
-store.dispatch(buycake())
+store.dispatch(buyIcecream())
+store.dispatch(buyIcecream())
+store.dispatch(buyIcecream())
+
 // unsubscribe
 unsubscribe()
